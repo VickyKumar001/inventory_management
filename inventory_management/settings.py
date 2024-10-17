@@ -79,10 +79,15 @@ WSGI_APPLICATION = 'inventory_management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'inventory',       # Your MySQL database name
+        'USER': 'root',      # Your MySQL username
+        'PASSWORD': 'Vicky@$80510',  # Your MySQL password
+        'HOST': 'localhost',                # Or an IP address if you are using a remote server
+        'PORT': '3306',                     # Default MySQL port
     }
 }
+
 
 
 #jwt 
@@ -91,6 +96,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
 
 #caching
 CACHES = {
@@ -119,7 +125,9 @@ LOGGING = {
     },
 }
 
-
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 # Password validation
